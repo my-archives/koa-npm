@@ -1,6 +1,6 @@
 {
   "name": "koa-npm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Require global npm module middleware for Koa.",
   "main": "index.js",
   "scripts": {
