@@ -1,5 +1,6 @@
 var debug = require('debug')('koa-npm');
-var exec = require('co-exec');
+var exec  = require('co-exec');
+var path  = require('path');
 
 module.exports = function (app) {
 
@@ -8,12 +9,11 @@ module.exports = function (app) {
       return yield next;
     }
 
-    var rootPath = (yield exec('npm root -g')).trim();
-    module.paths.unshift(rootPath);
+    app.npmRootPath = (yield exec('npm root -g')).trim();
 
-    debug('npm global root %s', rootPath);
+    debug('npm global root %s', app.npmRootPath);
 
-    app.npm = require('npm');
+    app.npm = require(path.join(app.npmRootPath, 'npm'));
     yield next;
 
   };

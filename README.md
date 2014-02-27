@@ -18,7 +18,7 @@ var app = koa();
 app.use(npm(app));
 
 app.use(function *() {
-  this.body = 'npm@' + this.app.npm.version;
+  this.body = 'npm@' + this.app.npm.version + '\n' + this.app.npmRootPath;
 })
 
 app.listen(3000);
