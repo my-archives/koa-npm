@@ -6,9 +6,9 @@ describe('Koa NPM', function() {
 
   it('should work', function(done) {
     var app = koa();
-    app.use(npm());
+    app.use(npm(app));
     app.use(function *() {
-      this.body = 'npm@' + this.npm.version; 
+      this.body = 'npm@' + this.app.npm.version;
     });
 
     request(app.listen())

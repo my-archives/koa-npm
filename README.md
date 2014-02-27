@@ -15,10 +15,10 @@ var koa = require('koa');
 var npm = require('koa-npm');
 var app = koa();
 
-app.use(npm());
+app.use(npm(app));
 
 app.use(function *() {
-  this.body = 'npm@' + this.npm.version;
+  this.body = 'npm@' + this.app.npm.version;
 })
 
 app.listen(3000);
