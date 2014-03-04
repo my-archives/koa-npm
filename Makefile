@@ -7,4 +7,7 @@ test:
 clean:
 	@rm -rf node_modules
 
+sample:
+	@DEBUG=koa-npm node --harmony example.js
+
 .PHONY: test clean
